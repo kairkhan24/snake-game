@@ -11,20 +11,18 @@ impl Point {
         Self { x, y }
     }
 
-    pub fn transform(&self,
-                     direction: Direction,
-                     times: u16) -> Self {
+    pub fn transform(&self, direction: Direction, times: u16) -> Self {
         let times = times as i16;
         let transformation = match direction {
             Direction::Up => (0, -times),
-            Direction::Down => (times, 0),
-            Direction::Right => (0, times),
+            Direction::Right => (times, 0),
+            Direction::Down => (0, times),
             Direction::Left => (-times, 0),
         };
 
         Self::new(
-            Self::transform_value(self.x, transformation.0),
-            Self::transform_value(self.y, transformation.1),
+                Self::transform_value(self.x, transformation.0),
+        Self::transform_value(self.y, transformation.1),
         )
     }
 

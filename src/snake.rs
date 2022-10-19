@@ -9,14 +9,12 @@ pub struct Snake {
 }
 
 impl Snake {
-    pub fn new(start: Point,
-               length: u16,
-               direction: Direction) -> Self {
-        let opposite: Direction = direction.opposite();
+    pub fn new(start: Point, length: u16, direction: Direction) -> Self {
+        let opposite = direction.opposite();
         let body: Vec<Point> = (0..length)
-            .into_iter()
-            .map(|i| start.transform(opposite, i))
-            .collect();
+        .into_iter()
+        .map(|i| start.transform(opposite, i))
+        .collect();
 
         Self { body, direction, digesting: false }
     }
